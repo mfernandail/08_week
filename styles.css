@@ -20,6 +20,7 @@ header{
 }
 
 main {
+  text-align: center;
 }
 
 footer {
@@ -27,4 +28,21 @@ footer {
   text-align: center;
   color: #fff;
   padding: 10px;
+}
+
+
+.pokemonList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.pokeCard {
+  margin: 20px;
+}
+
+.img {
+  width: 100px;
+  height: auto;
+  margin-top: 20px;
 }
