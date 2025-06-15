@@ -51,6 +51,7 @@ search.addEventListener('keydown', (e) => {
           src="${filterPoke[0]?.sprites.other.dream_world.front_default}"
           alt=${filterPoke[0]?.name}
         />
+        <p>${filterPoke[0]?.name}</p>
       `
       container.appendChild(pokeCard)
     } else {
