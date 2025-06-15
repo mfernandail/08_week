@@ -20,5 +20,5 @@
 
 ## 💻 Mini project of the week:  
 **🌐 Dynamic List from a Public API**  
-A functional app that performs an HTTP request to an external API (like JSONPlaceholder or PokéAPI), retrieves data, and displays it as dynamic cards on the screen.  
-The project includes asynchronous data loading, error management, and clean visual presentation of the fetched information.
+A functional app that performs an HTTP request to an external API, retrieves data, and displays it as dynamic cards on the screen.  
+The project includes asynchronous data loading and error management.
