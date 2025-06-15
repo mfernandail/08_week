@@ -1,8 +1,11 @@
-const apiUrl = "https://pokeapi.co/api/v2/pokemon"
-const container = document.getElementById("pokemonList")
+const container = document.getElementById('pokemonList')
+const search = document.getElementById('search')
+let pokeList = []
 
-async function getPokemons(apiUrl) {
-  for (let i = 1; i <= 10; i++) {
+async function getPokemons() {
+  container.innerHTML = ''
+
+  for (let i = 1; i <= 151; i++) {
     const pokeCard = document.createElement('div')
     pokeCard.classList.add('pokeCard')
 
@@ -14,7 +17,7 @@ async function getPokemons(apiUrl) {
 
     const result = await response.json()
 
-    console.log(result)
+    pokeList.push(result)
 
     pokeCard.innerHTML = `
       <h3>${result.name}</h3>
@@ -24,9 +27,40 @@ async function getPokemons(apiUrl) {
         alt=${result.name}
       />
     `
-
     container.appendChild(pokeCard)
   }
 }
 
-getPokemons(apiUrl)
+search.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const pokeFind = e.target.value.toLowerCase()
+    const filterPoke = pokeList.filter(
+      (pokemon) => pokemon.name.toLowerCase() === pokeFind
+    )
+    console.log(filterPoke)
+
+    if (filterPoke.length > 0) {
+      clearHTML()
+      const pokeCard = document.createElement('div')
+      pokeCard.classList.add('pokeCard')
+
+      pokeCard.innerHTML = `
+        <h3>${filterPoke[0]?.name}</h3>
+        <img
+          class="img"
+          src="${filterPoke[0]?.sprites.other.dream_world.front_default}"
+          alt=${filterPoke[0]?.name}
+        />
+      `
+      container.appendChild(pokeCard)
+    } else {
+      getPokemons()
+    }
+  }
+})
+
+getPokemons()
+
+function clearHTML() {
+  container.innerHTML = ''
+}
